@@ -4,10 +4,10 @@
 
 // This program is DB
 int main (void) {
-  char operation;
+  char *operation;
   printf("こんにちは\n");
   printf("どの操作を行いますか？\nDB追加(A), DB削除(B), DB探索(C)\n");
-  scanf("%s", &operation);
+  scanf("%s", operation);
   if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "A") == 0)
   {
     /* code */
