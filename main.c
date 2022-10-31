@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 
 
 // This program is DB
@@ -8,15 +8,15 @@ int main (void) {
   printf("こんにちは\n");
   printf("どの操作を行いますか？\nDB追加(A), DB削除(B), DB探索(C)\n");
   scanf("%s", &operation);
-  if (operation == "DB追加" || operation == "A")
+  if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "A") == 0)
   {
     /* code */
   }
-  else if (operation == "DB削除" || operation == "B")
+  else if (strcmp(operation, "DB削除") == 0 || strcmp(operation, "B") == 0)
   {
     /* code */
   }
-  else if (operation == "DB探索" || operation == "C")
+  else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "C") == 0)
   {
     /* code */
   }
