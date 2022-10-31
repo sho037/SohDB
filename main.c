@@ -7,7 +7,7 @@ int main (void) {
   char operation;
   printf("こんにちは\n");
   printf("どの操作を行いますか？\nDB追加(A), DB削除(B), DB探索(C)\n");
-  scanf("%s", operation);
+  scanf("%s", &operation);
   if (operation == "DB追加" || operation == "A")
   {
     /* code */
