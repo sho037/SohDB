@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-
 // This program is DB
-int main (void) {
+int main(void)
+{
   char *operation;
   printf("こんにちは\n");
   printf("どの操作を行いますか？\nDB追加(A), DB削除(B), DB探索(C)\n");
@@ -20,7 +20,6 @@ int main (void) {
   {
     /* code */
   }
-  
 
   return 0;
 }
