@@ -5,7 +5,7 @@ void addDataBase(void)
 {
 }
 
-void removeDataBase(void)
+void updateDataBase(void)
 {
 }
 
@@ -31,7 +31,7 @@ int main(void)
   }
   else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "B") == 0)
   {
-    removeDataBase();
+    updateDataBase();
   }
   else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "C") == 0)
   {
