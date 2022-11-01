@@ -1,19 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
-void addDataBase(void)
+void addDataBase(char *filename)
 {
 }
 
-void updateDataBase(void)
+void updateDataBase(char *filename)
 {
 }
 
-void serchDataBase(void)
-{
-}
-
-void updateDataBase(void)
+void serchDataBase(char *filename)
 {
 }
 
@@ -27,15 +23,17 @@ int main(void)
   scanf("%s", operation);
   if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "A") == 0)
   {
-    addDataBase();
+    printf("データベースを追加するため、ファイル名を決めてください。\n");
+    scanf("%s", filename);
+    addDataBase(filename);
   }
   else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "B") == 0)
   {
-    updateDataBase();
+    updateDataBase(filename);
   }
   else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "C") == 0)
   {
-    serchDataBase();
+    serchDataBase(filename);
   }
 
   return 0;
