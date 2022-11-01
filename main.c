@@ -56,7 +56,7 @@ int main(void)
       scanf("%s", yesorno);
     } while (!(strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0 || strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0));
 
-  } while (!(strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0));
+  } while (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0);
 
   return 0;
 }
