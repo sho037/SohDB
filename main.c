@@ -29,10 +29,14 @@ int main(void)
   }
   else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "B") == 0)
   {
+    printf("データベースを更新するため、ファイル名を入力してください\n");
+    scanf("%s", filename);
     updateDataBase(filename);
   }
   else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "C") == 0)
   {
+    printf("データベースを探索するため、ファイル名を入力してください\n");
+    scanf("%s", filename);
     serchDataBase(filename);
   }
 
