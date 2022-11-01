@@ -70,10 +70,10 @@ int main(void)
 
   do
   {
-    printf("どの操作を行いますか？\nDB追加(A), DB更新(B), DB探索(C)\n");
+    printf("どの操作を行いますか？\nDB追加, DB更新, DB探索\n");
     scanf("%s", operation);
     printf("%s", operation); // develop
-    if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "A") == 0)
+    if (strcmp(whichOperation(operation), "add") == 0)
     {
       printf("データベースを追加するため、ファイル名を決めてください。\n");
       do
@@ -88,7 +88,7 @@ int main(void)
       addDataBase(filename);
       printf("データベースの追加を終了します。\n");
     }
-    else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "B") == 0)
+    else if (strcmp(whichOperation(operation), "update") == 0)
     {
       printf("データベースを更新するため、ファイル名を入力してください\n");
       do
@@ -103,7 +103,7 @@ int main(void)
       updateDataBase(filename);
       printf("データベースの更新を終了します。\n");
     }
-    else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "C") == 0)
+    else if (strcmp(whichOperation(operation), "serch") == 0)
     {
       printf("データベースを探索するため、ファイル名を入力してください\n");
       do
