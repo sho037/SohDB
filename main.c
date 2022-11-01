@@ -44,6 +44,22 @@ bool existFile(const char *path)
   return true;
 }
 
+char *whichOperation(char operation[])
+{
+  if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0)
+  {
+    return "add";
+  }
+  else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "更新") == 0 || strcmp(operation, "update") == 0)
+  {
+    return "update";
+  }
+  else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "探索") == 0 || strcmp(operation, "serch") == 0)
+  {
+    return "serch";
+  }
+}
+
 // This program is DB
 int main(void)
 {
