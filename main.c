@@ -1,26 +1,28 @@
 #include <stdio.h>
 #include <string.h>
+#define ARRAYSIZE 256
 
-void addDataBase(char *filename)
+void addDataBase(char filename[])
 {
 }
 
-void updateDataBase(char *filename)
+void updateDataBase(char filename[])
 {
 }
 
-void serchDataBase(char *filename)
+void serchDataBase(char filename[])
 {
 }
 
 // This program is DB
 int main(void)
 {
-  char *operation;
-  char *filename;
+  char operation[ARRAYSIZE];
+  char filename[ARRAYSIZE];
   printf("こんにちは\n");
   printf("どの操作を行いますか？\nDB追加(A), DB更新(B), DB探索(C)\n");
   scanf("%s", operation);
+  printf("%s", operation);
   if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "A") == 0)
   {
     printf("データベースを追加するため、ファイル名を決めてください。\n");
