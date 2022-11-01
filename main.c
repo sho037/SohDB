@@ -21,7 +21,6 @@ int main(void)
   char filename[ARRAYSIZE];
   printf("こんにちは\n");
   printf("どの操作を行いますか？\nDB追加(A), DB更新(B), DB探索(C)\n");
-  scanf("%s", operation);
   printf("%s", operation);
   if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "A") == 0)
   {
