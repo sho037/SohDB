@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
+void addDataBase(void)
+{
+}
+
+void removeDataBase(void)
+{
+}
+
+void serchDataBase(void)
+{
+}
+
 // This program is DB
 int main(void)
 {
@@ -10,15 +22,15 @@ int main(void)
   scanf("%s", operation);
   if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "A") == 0)
   {
-    /* code */
+    addDataBase();
   }
   else if (strcmp(operation, "DB削除") == 0 || strcmp(operation, "B") == 0)
   {
-    /* code */
+    removeDataBase();
   }
   else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "C") == 0)
   {
-    /* code */
+    serchDataBase();
   }
 
   return 0;
