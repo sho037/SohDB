@@ -14,6 +14,22 @@ void serchDataBase(char filename[])
 {
 }
 
+char *orYesNo(char yesorno[])
+{
+  if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
+  {
+    return "y";
+  }
+  else if (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
+  {
+    return "n";
+  }
+  else
+  {
+    return "error";
+  }
+}
+
 // This program is DB
 int main(void)
 {
@@ -53,13 +69,14 @@ int main(void)
       printf("正しく入力を行ってください\n");
       continue;
     }
+
     do
     {
       printf("データベースの操作を続けますか？(Y/n)\n");
       scanf("%s", yesorno);
-    } while (!(strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0 || strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0));
+    } while (strcmp(orYesNo(yesorno), "error") == 0);
 
-  } while (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0);
+  } while (!(strcmp(orYesNo(yesorno), "y") == 0));
 
   return 0;
 }
