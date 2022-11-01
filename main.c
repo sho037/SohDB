@@ -13,10 +13,15 @@ void serchDataBase(void)
 {
 }
 
+void updateDataBase(void)
+{
+}
+
 // This program is DB
 int main(void)
 {
   char *operation;
+  char *filename;
   printf("こんにちは\n");
   printf("どの操作を行いますか？\nDB追加(A), DB削除(B), DB探索(C)\n");
   scanf("%s", operation);
@@ -31,6 +36,10 @@ int main(void)
   else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "C") == 0)
   {
     serchDataBase();
+  }
+  else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "D") == 0)
+  {
+    updateDataBase();
   }
 
   return 0;
