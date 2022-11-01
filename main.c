@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
+
 #define ARRAYSIZE 256
 
 void addDataBase(char filename[])
@@ -28,6 +30,17 @@ char *orYesNo(char yesorno[])
   {
     return "error";
   }
+}
+
+bool existFile(const char* path){
+  FILE* fp = fopen(path, "r");
+  if (fp == NULL)
+  {
+    return false;
+  }
+  
+  fclose(fp);
+  return true;
 }
 
 // This program is DB
