@@ -4,51 +4,6 @@
 
 #define ARRAYSIZE 256
 
-void addDataBase()
-{
-  char filename[ARRAYSIZE];
-  printf("データベースを追加するため、ファイル名を決めてください。\n");
-  do
-  {
-    scanf("%s", filename);
-    if (existFile(filename))
-    {
-      printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
-    }
-  } while (existFile(filename));
-  printf("データベースの追加を終了します。\n");
-}
-
-void updateDataBase()
-{
-  char filename[ARRAYSIZE];
-  printf("データベースを更新するため、ファイル名を入力してください\n");
-  do
-  {
-    scanf("%s", filename);
-    if (!existFile(filename))
-    {
-      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
-    }
-  } while (!existFile(filename));
-  printf("データベースの更新を終了します。\n");
-}
-
-void serchDataBase()
-{
-  char filename[ARRAYSIZE];
-  printf("データベースを探索するため、ファイル名を入力してください\n");
-  do
-  {
-    scanf("%s", filename);
-    if (!existFile(filename))
-    {
-      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
-    }
-  } while (!existFile(filename));
-  printf("データベースの探索を終了します。\n");
-}
-
 // orYesNo関数
 // 引数の値がYes(y)かNo(n)かを判定する
 // 返り値は"y"か"n"か"error"
@@ -100,6 +55,51 @@ char *whichOperation(char operation[])
   {
     return "serch";
   }
+}
+
+void addDataBase()
+{
+  char filename[ARRAYSIZE];
+  printf("データベースを追加するため、ファイル名を決めてください。\n");
+  do
+  {
+    scanf("%s", filename);
+    if (existFile(filename))
+    {
+      printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (existFile(filename));
+  printf("データベースの追加を終了します。\n");
+}
+
+void updateDataBase()
+{
+  char filename[ARRAYSIZE];
+  printf("データベースを更新するため、ファイル名を入力してください\n");
+  do
+  {
+    scanf("%s", filename);
+    if (!existFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!existFile(filename));
+  printf("データベースの更新を終了します。\n");
+}
+
+void serchDataBase()
+{
+  char filename[ARRAYSIZE];
+  printf("データベースを探索するため、ファイル名を入力してください\n");
+  do
+  {
+    scanf("%s", filename);
+    if (!existFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!existFile(filename));
+  printf("データベースの探索を終了します。\n");
 }
 
 // This program is DB
