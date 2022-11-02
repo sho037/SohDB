@@ -35,6 +35,9 @@ char *orYesNo(char yesorno[])
   }
 }
 
+// existFile関数
+// 引数として与えられたファイルが存在するかどうかを判定する
+// 存在する場合は戻り値がtrue、存在しない場合はfalseを返す
 bool existFile(const char *path)
 {
   FILE *fp = fopen(path, "r");
