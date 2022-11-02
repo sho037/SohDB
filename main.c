@@ -16,6 +16,9 @@ void serchDataBase(char filename[])
 {
 }
 
+// orYesNo関数
+// 引数の値がYes(y)かNo(n)かを判定する
+// 返り値は"y"か"n"か"error"
 char *orYesNo(char yesorno[])
 {
   if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
