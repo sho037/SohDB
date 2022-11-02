@@ -4,16 +4,49 @@
 
 #define ARRAYSIZE 256
 
-void addDataBase(char filename[])
+void addDataBase()
 {
+  char filename[ARRAYSIZE];
+  printf("データベースを追加するため、ファイル名を決めてください。\n");
+  do
+  {
+    scanf("%s", filename);
+    if (existFile(filename))
+    {
+      printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (existFile(filename));
+  printf("データベースの追加を終了します。\n");
 }
 
-void updateDataBase(char filename[])
+void updateDataBase()
 {
+  char filename[ARRAYSIZE];
+  printf("データベースを更新するため、ファイル名を入力してください\n");
+  do
+  {
+    scanf("%s", filename);
+    if (!existFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!existFile(filename));
+  printf("データベースの更新を終了します。\n");
 }
 
-void serchDataBase(char filename[])
+void serchDataBase()
 {
+  char filename[ARRAYSIZE];
+  printf("データベースを探索するため、ファイル名を入力してください\n");
+  do
+  {
+    scanf("%s", filename);
+    if (!existFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!existFile(filename));
+  printf("データベースの探索を終了します。\n");
 }
 
 // orYesNo関数
@@ -84,48 +117,15 @@ int main(void)
     printf("%s", operation); // develop
     if (strcmp(whichOperation(operation), "add") == 0)
     {
-      printf("データベースを追加するため、ファイル名を決めてください。\n");
-      do
-      {
-        scanf("%s", filename);
-        if (existFile(filename))
-        {
-          printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
-        }
-      } while (existFile(filename));
-
-      addDataBase(filename);
-      printf("データベースの追加を終了します。\n");
+      addDataBase();
     }
     else if (strcmp(whichOperation(operation), "update") == 0)
     {
-      printf("データベースを更新するため、ファイル名を入力してください\n");
-      do
-      {
-        scanf("%s", filename);
-        if (!existFile(filename))
-        {
-          printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
-        }
-      } while (!existFile(filename));
-
-      updateDataBase(filename);
-      printf("データベースの更新を終了します。\n");
+      updateDataBase();
     }
     else if (strcmp(whichOperation(operation), "serch") == 0)
     {
-      printf("データベースを探索するため、ファイル名を入力してください\n");
-      do
-      {
-        scanf("%s", filename);
-        if (!existFile(filename))
-        {
-          printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
-        }
-      } while (!existFile(filename));
-
-      serchDataBase(filename);
-      printf("データベースの探索を終了します。\n");
+      serchDataBase();
     }
     else
     {
