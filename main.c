@@ -114,7 +114,7 @@ int main(void)
   {
     printf("どの操作を行いますか？\nDB追加, DB更新, DB探索\n");
     scanf("%s", operation);
-    printf("%s", operation); // develop
+    printf("%s\n", operation); // develop
     if (strcmp(whichOperation(operation), "add") == 0)
     {
       addDataBase();
