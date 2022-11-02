@@ -55,7 +55,7 @@ char *whichOperation(char operation[])
   {
     return "serch";
   }
-  return NULL;
+  return "";
 }
 
 void addDataBase()
