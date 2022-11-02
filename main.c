@@ -50,6 +50,9 @@ bool existFile(const char *path)
   return true;
 }
 
+// whichOperation関数
+// 引数として与えられた文字列がどの操作を表すのかを判定し、簡単に分かるようにして返却する
+// 返り値は"add","update","serch"になる
 char *whichOperation(char operation[])
 {
   if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0)
