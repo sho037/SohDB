@@ -140,7 +140,7 @@ int main(void)
       scanf("%s", yesorno);
     } while (strcmp(orYesNo(yesorno), "error") == 0);
 
-  } while (!(strcmp(orYesNo(yesorno), "y") == 0));
+  } while (strcmp(orYesNo(yesorno), "y") == 0);
 
   return 0;
 }
