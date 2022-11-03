@@ -41,21 +41,21 @@ bool existFile(const char *path)
 // whichOperation関数
 // 引数として与えられた文字列がどの操作を表すのかを判定し、簡単に分かるようにして返却する
 // 返り値は"add","update","serch"になる
-char *whichOperation(char operation[])
+bool whichOperation(char operation[], char match[])
 {
-  if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0)
+  if (strcmp(match, "add") == 0 && (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0))
   {
-    return "add";
+    return true;
   }
-  else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "更新") == 0 || strcmp(operation, "update") == 0)
+  else if (strcmp(match, "update") == 0 && (strcmp(operation, "DB更新") == 0 || strcmp(operation, "更新") == 0 || strcmp(operation, "update") == 0))
   {
-    return "update";
+    return true;
   }
-  else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "探索") == 0 || strcmp(operation, "serch") == 0)
+  else if (strcmp(match, "serch") == 0 && (strcmp(operation, "DB探索") == 0 || strcmp(operation, "探索") == 0 || strcmp(operation, "serch") == 0))
   {
-    return "serch";
+    return true;
   }
-  return "";
+  return false;
 }
 
 void addDataBase()
@@ -116,15 +116,15 @@ int main(void)
     printf("どの操作を行いますか？\nDB追加, DB更新, DB探索\n");
     scanf("%s", operation);
     printf("%s\n", operation); // develop
-    if (strcmp(whichOperation(operation), "add") == 0)
+    if (whichOperation(operation, "add"))
     {
       addDataBase();
     }
-    else if (strcmp(whichOperation(operation), "update") == 0)
+    else if (whichOperation(operation, "update"))
     {
       updateDataBase();
     }
-    else if (strcmp(whichOperation(operation), "serch") == 0)
+    else if (whichOperation(operation, "serch"))
     {
       serchDataBase();
     }
