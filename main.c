@@ -5,21 +5,25 @@
 #define ARRAYSIZE 256
 
 // orYesNo関数
-// 引数の値がYes(y)かNo(n)かを判定する
-// 返り値は"y"か"n"か"error"
-char *orYesNo(char yesorno[])
+// 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
+// 返り値はtureかfalse
+bool orYesNo(char yesorno[], char match[])
 {
-  if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
+  if (strcmp(match, "yes") == 0 && (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0))
   {
-    return "y";
+    return true;
   }
-  else if (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
+  else if (strcmp(match, "no") == 0 && (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0))
   {
-    return "n";
+    return true;
+  }
+  else if (strcmp(match, "error") == 0)
+  {
+    return true;
   }
   else
   {
-    return "error";
+    return false;
   }
 }
 
@@ -39,23 +43,23 @@ bool existFile(const char *path)
 }
 
 // whichOperation関数
-// 引数として与えられた文字列がどの操作を表すのかを判定し、簡単に分かるようにして返却する
-// 返り値は"add","update","serch"になる
-char *whichOperation(char operation[])
+// 第一引数に入れられた操作と、第二引数に入れられた操作が一致するかどうかを判定する
+// 戻り値はture、falseになる。
+bool whichOperation(char operation[], char match[])
 {
-  if (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0)
+  if (strcmp(match, "add") == 0 && (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0))
   {
-    return "add";
+    return true;
   }
-  else if (strcmp(operation, "DB更新") == 0 || strcmp(operation, "更新") == 0 || strcmp(operation, "update") == 0)
+  else if (strcmp(match, "update") == 0 && (strcmp(operation, "DB更新") == 0 || strcmp(operation, "更新") == 0 || strcmp(operation, "update") == 0))
   {
-    return "update";
+    return true;
   }
-  else if (strcmp(operation, "DB探索") == 0 || strcmp(operation, "探索") == 0 || strcmp(operation, "serch") == 0)
+  else if (strcmp(match, "serch") == 0 && (strcmp(operation, "DB探索") == 0 || strcmp(operation, "探索") == 0 || strcmp(operation, "serch") == 0))
   {
-    return "serch";
+    return true;
   }
-  return "";
+  return false;
 }
 
 void addDataBase()
@@ -116,15 +120,15 @@ int main(void)
     printf("どの操作を行いますか？\nDB追加, DB更新, DB探索\n");
     scanf("%s", operation);
     printf("%s\n", operation); // develop
-    if (strcmp(whichOperation(operation), "add") == 0)
+    if (whichOperation(operation, "add"))
     {
       addDataBase();
     }
-    else if (strcmp(whichOperation(operation), "update") == 0)
+    else if (whichOperation(operation, "update"))
     {
       updateDataBase();
     }
-    else if (strcmp(whichOperation(operation), "serch") == 0)
+    else if (whichOperation(operation, "serch"))
     {
       serchDataBase();
     }
@@ -138,9 +142,9 @@ int main(void)
     {
       printf("データベースの操作を続けますか？(Y/n)\n");
       scanf("%s", yesorno);
-    } while (strcmp(orYesNo(yesorno), "error") == 0);
+    } while (!orYesNo(yesorno, "error"));
 
-  } while (!(strcmp(orYesNo(yesorno), "y") == 0));
+  } while (!orYesNo(yesorno, "no"));
 
   return 0;
 }
