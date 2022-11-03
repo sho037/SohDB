@@ -7,19 +7,23 @@
 // orYesNo関数
 // 引数の値がYes(y)かNo(n)かを判定する
 // 返り値は"y"か"n"か"error"
-char *orYesNo(char yesorno[])
+bool orYesNo(char yesorno[], char match[])
 {
-  if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
+  if (strcmp(match, "yes") == 0 && (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0))
   {
-    return "y";
+    return true;
   }
-  else if (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
+  else if (strcmp(match, "no") == 0 && (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0))
   {
-    return "n";
+    return true;
+  }
+  else if (strcmp(match, "error") == 0)
+  {
+    return true;
   }
   else
   {
-    return "error";
+    return false;
   }
 }
 
@@ -138,9 +142,9 @@ int main(void)
     {
       printf("データベースの操作を続けますか？(Y/n)\n");
       scanf("%s", yesorno);
-    } while (strcmp(orYesNo(yesorno), "error") == 0);
+    } while (!orYesNo(yesorno, "error"));
 
-  } while (strcmp(orYesNo(yesorno), "y") == 0);
+  } while (!orYesNo(yesorno, "no"));
 
   return 0;
 }
