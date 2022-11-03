@@ -5,8 +5,8 @@
 #define ARRAYSIZE 256
 
 // orYesNo関数
-// 引数の値がYes(y)かNo(n)かを判定する
-// 返り値は"y"か"n"か"error"
+// 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
+// 返り値はtureかfalse
 bool orYesNo(char yesorno[], char match[])
 {
   if (strcmp(match, "yes") == 0 && (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0))
