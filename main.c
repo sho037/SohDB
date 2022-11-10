@@ -8,10 +8,10 @@
 // すべてのモードを表示する
 void printAllMode(void)
 {
-    printf("DBを作成する: create, 作成\n");
-    printf("DBを削除する: delete, 削除\n");
+    printf("DBを作成する      : create, 作成\n");
+    printf("DBを削除する      : delete, 削除\n");
     printf("DBの内容を表示する: show, 表示\n");
-    printf("DB内を検索する: search, 検索\n");
+    printf("DB内を検索する    : search, 検索\n");
     printf("DBの内容を追加する: add, 追加\n");
 }
 
@@ -128,7 +128,8 @@ int main(void)
 
   do
   {
-    printf("どの操作を行いますか？\nDB追加, DB更新, DB探索\n");
+    printf("どの操作を行いますか？\n");
+    printAllMode();
     scanf("%s", operation);
     printf("%s\n", operation); // develop
     if (whichOperation(operation, "add"))
