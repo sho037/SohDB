@@ -20,22 +20,29 @@ int main(void)
     printAllMode();
     scanf("%s", operation);
     printf("%s\n", operation); // develop
-    if (whichOperation(operation, "add"))
+    if (whichOperation(operation, "create"))
     {
-      addDataBase();
+      createDatabase();
     }
-    else if (whichOperation(operation, "update"))
+    else if (whichOperation(operation, "delete"))
     {
-      updateDataBase();
+      deleteDatabase();
     }
-    else if (whichOperation(operation, "serch"))
+    else if (whichOperation(operation, "show"))
     {
-      serchDataBase();
+      showDatabase();
+    }
+    else if (whichOperation(operation, "search"))
+    {
+      searchDatabase();
+    }
+    else if (whichOperation(operation, "add"))
+    {
+      addDatabase();
     }
     else
     {
-      printf("正しく入力を行ってください\n");
-      continue;
+      printf("入力された操作は存在しません\n");
     }
 
     do
