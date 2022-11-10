@@ -3,6 +3,7 @@
 #include <stdbool.h>
 
 #define ARRAYSIZE 256
+#define FILENAMESIZE 200
 
 // printAllMode関数
 // すべてのモードを表示する
