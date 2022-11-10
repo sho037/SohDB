@@ -87,6 +87,26 @@ bool whichOperation(char operation[], char match[])
 
 void createDataBase()
 {
+  char filename[FILENAMESIZE];
+  printf("データベースを作成するため、ファイル名を決めてください。\n");
+  do
+  {
+    scanf("%s", filename);
+    if (isExistFile(filename))
+    {
+      printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (isExistFile(filename));
+
+  // ここからデータベースの作成
+  FILE *fp = fopen(filename, "w");
+  if (fp == NULL)
+  {
+    printf("ファイルの作成に失敗しました。\n");
+    return;
+  }
+  
+  printf("データベースの作成を終了します。\n");
 }
 
 void deleteDataBase()
