@@ -22,6 +22,6 @@ void deleteDatabase(void);
 
 void showDatabase(void);
 
-void serchDatabase(void);
+void searchDatabase(void);
 
 void addDatabase(void);
