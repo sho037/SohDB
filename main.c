@@ -22,23 +22,23 @@ int main(void)
     printf("%s\n", operation); // develop
     if (whichOperation(operation, "create"))
     {
-      createDatabase();
+      createDataBase();
     }
     else if (whichOperation(operation, "delete"))
     {
-      deleteDatabase();
+      deleteDataBase();
     }
     else if (whichOperation(operation, "show"))
     {
-      showDatabase();
+      showDataBase();
     }
     else if (whichOperation(operation, "search"))
     {
-      searchDatabase();
+      searchDataBase();
     }
     else if (whichOperation(operation, "add"))
     {
-      addDatabase();
+      addDataBase();
     }
     else
     {
