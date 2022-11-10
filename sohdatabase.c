@@ -110,6 +110,44 @@ void createDataBase()
 
 void deleteDataBase()
 {
+  char filename[FILENAMESIZE];
+  printf("データベースを削除するため、ファイル名を入力してください。\n");
+  do
+  {
+    scanf("%s", filename);
+    if (!isExistFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!isExistFile(filename));
+
+  // ここからデータベースの削除
+  char yesorno[10];
+  printf("ファイル名は:%sです。本当に削除しますか？(Y/N)\n", filename);
+  do
+  {
+    scanf("%s", yesorno);
+    if (orYesNo(yesorno, "error"))
+    {
+      printf("YかNを入力してください。\n");
+    }
+  } while (!orYesNo(yesorno, "error"));
+
+  if (orYesNo(yesorno, "yes"))
+  {
+    if (remove(filename) == 0)
+    {
+      printf("ファイルの削除に成功しました。\n");
+    }
+    else
+    {
+      printf("ファイルの削除に失敗しました。\n");
+    }
+  }
+  else if (orYesNo(yesorno, "no"))
+  {
+    printf("ファイルの削除をキャンセルしました。\n");
+  }
 }
 
 void showDataBase()
