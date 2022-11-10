@@ -58,19 +58,30 @@ bool existFile(const char *path)
 // 戻り値はture、falseになる。
 bool whichOperation(char operation[], char match[])
 {
-  if (strcmp(match, "add") == 0 && (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0))
+  if (strcmp(match, "create") == 0 && (strcmp(operation, "create") == 0 || strcmp(operation, "作成")))
   {
     return true;
   }
-  else if (strcmp(match, "update") == 0 && (strcmp(operation, "DB更新") == 0 || strcmp(operation, "更新") == 0 || strcmp(operation, "update") == 0))
+  else if (strcmp(match, "delete") == 0 && (strcmp(operation, "delete") == 0 || strcmp(operation, "削除")))
   {
     return true;
   }
-  else if (strcmp(match, "serch") == 0 && (strcmp(operation, "DB探索") == 0 || strcmp(operation, "探索") == 0 || strcmp(operation, "serch") == 0))
+  else if (strcmp(match, "show") == 0 && (strcmp(operation, "show") == 0 || strcmp(operation, "表示")))
   {
     return true;
   }
-  return false;
+  else if (strcmp(match, "search") == 0 && (strcmp(operation, "search") == 0 || strcmp(operation, "検索")))
+  {
+    return true;
+  }
+  else if (strcmp(match, "add") == 0 && (strcmp(operation, "add") == 0 || strcmp(operation, "追加")))
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 void addDataBase()
