@@ -4,6 +4,17 @@
 
 #define ARRAYSIZE 256
 
+// printAllMode関数
+// すべてのモードを表示する
+void printAllMode(void)
+{
+    printf("DBを作成する: create, 作成\n");
+    printf("DBを削除する: delete, 削除\n");
+    printf("DBの内容を表示する: show, 表示\n");
+    printf("DB内を検索する: search, 検索\n");
+    printf("DBの内容を追加する: add, 追加\n");
+}
+
 // orYesNo関数
 // 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
 // 返り値はtureかfalse
