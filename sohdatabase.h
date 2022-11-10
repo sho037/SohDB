@@ -16,12 +16,12 @@ bool isExistFile(const char *path);
 // 戻り値はture、falseになる。
 bool whichOperation(char operation[], char match[]);
 
-void createDatabase(void);
+void createDataBase(void);
 
-void deleteDatabase(void);
+void deleteDataBase(void);
 
-void showDatabase(void);
+void showDataBase(void);
 
-void searchDatabase(void);
+void searchDataBase(void);
 
-void addDatabase(void);
+void addDataBase(void);
