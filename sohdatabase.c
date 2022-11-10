@@ -42,7 +42,7 @@ bool orYesNo(char yesorno[], char match[])
 // existFile関数
 // 引数として与えられたファイルが存在するかどうかを判定する
 // 存在する場合は戻り値がtrue、存在しない場合はfalseを返す
-bool existFile(const char *path)
+bool isExistFile(const char *path)
 {
   FILE *fp = fopen(path, "r");
   if (fp == NULL)
@@ -92,11 +92,11 @@ void addDataBase()
   do
   {
     scanf("%s", filename);
-    if (existFile(filename))
+    if (isExistFile(filename))
     {
       printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
     }
-  } while (existFile(filename));
+  } while (isExistFile(filename));
   printf("データベースの追加を終了します。\n");
 }
 
@@ -107,11 +107,11 @@ void updateDataBase()
   do
   {
     scanf("%s", filename);
-    if (!existFile(filename))
+    if (!isExistFile(filename))
     {
       printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
     }
-  } while (!existFile(filename));
+  } while (!isExistFile(filename));
   printf("データベースの更新を終了します。\n");
 }
 
@@ -122,10 +122,10 @@ void serchDataBase()
   do
   {
     scanf("%s", filename);
-    if (!existFile(filename))
+    if (!isExistFile(filename))
     {
       printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
     }
-  } while (!existFile(filename));
+  } while (!isExistFile(filename));
   printf("データベースの探索を終了します。\n");
 }
