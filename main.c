@@ -2,110 +2,9 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "sohdatabase.h"
+
 #define ARRAYSIZE 256
-
-// orYesNo関数
-// 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
-// 返り値はtureかfalse
-bool orYesNo(char yesorno[], char match[])
-{
-  if (strcmp(match, "yes") == 0 && (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0))
-  {
-    return true;
-  }
-  else if (strcmp(match, "no") == 0 && (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0))
-  {
-    return true;
-  }
-  else if (strcmp(match, "error") == 0)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-// existFile関数
-// 引数として与えられたファイルが存在するかどうかを判定する
-// 存在する場合は戻り値がtrue、存在しない場合はfalseを返す
-bool existFile(const char *path)
-{
-  FILE *fp = fopen(path, "r");
-  if (fp == NULL)
-  {
-    return false;
-  }
-
-  fclose(fp);
-  return true;
-}
-
-// whichOperation関数
-// 第一引数に入れられた操作と、第二引数に入れられた操作が一致するかどうかを判定する
-// 戻り値はture、falseになる。
-bool whichOperation(char operation[], char match[])
-{
-  if (strcmp(match, "add") == 0 && (strcmp(operation, "DB追加") == 0 || strcmp(operation, "追加") == 0 || strcmp(operation, "add") == 0))
-  {
-    return true;
-  }
-  else if (strcmp(match, "update") == 0 && (strcmp(operation, "DB更新") == 0 || strcmp(operation, "更新") == 0 || strcmp(operation, "update") == 0))
-  {
-    return true;
-  }
-  else if (strcmp(match, "serch") == 0 && (strcmp(operation, "DB探索") == 0 || strcmp(operation, "探索") == 0 || strcmp(operation, "serch") == 0))
-  {
-    return true;
-  }
-  return false;
-}
-
-void addDataBase()
-{
-  char filename[ARRAYSIZE];
-  printf("データベースを追加するため、ファイル名を決めてください。\n");
-  do
-  {
-    scanf("%s", filename);
-    if (existFile(filename))
-    {
-      printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
-    }
-  } while (existFile(filename));
-  printf("データベースの追加を終了します。\n");
-}
-
-void updateDataBase()
-{
-  char filename[ARRAYSIZE];
-  printf("データベースを更新するため、ファイル名を入力してください\n");
-  do
-  {
-    scanf("%s", filename);
-    if (!existFile(filename))
-    {
-      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
-    }
-  } while (!existFile(filename));
-  printf("データベースの更新を終了します。\n");
-}
-
-void serchDataBase()
-{
-  char filename[ARRAYSIZE];
-  printf("データベースを探索するため、ファイル名を入力してください\n");
-  do
-  {
-    scanf("%s", filename);
-    if (!existFile(filename))
-    {
-      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
-    }
-  } while (!existFile(filename));
-  printf("データベースの探索を終了します。\n");
-}
 
 // This program is DB
 int main(void)
@@ -117,25 +16,33 @@ int main(void)
 
   do
   {
-    printf("どの操作を行いますか？\nDB追加, DB更新, DB探索\n");
+    printf("どの操作を行いますか？\n");
+    printAllMode();
     scanf("%s", operation);
     printf("%s\n", operation); // develop
-    if (whichOperation(operation, "add"))
+    if (whichOperation(operation, "create"))
+    {
+      createDataBase();
+    }
+    else if (whichOperation(operation, "delete"))
+    {
+      deleteDataBase();
+    }
+    else if (whichOperation(operation, "show"))
+    {
+      showDataBase();
+    }
+    else if (whichOperation(operation, "search"))
+    {
+      searchDataBase();
+    }
+    else if (whichOperation(operation, "add"))
     {
       addDataBase();
     }
-    else if (whichOperation(operation, "update"))
-    {
-      updateDataBase();
-    }
-    else if (whichOperation(operation, "serch"))
-    {
-      serchDataBase();
-    }
     else
     {
-      printf("正しく入力を行ってください\n");
-      continue;
+      printf("入力された操作は存在しません\n");
     }
 
     do

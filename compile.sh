@@ -1,1 +1,1 @@
-gcc -o sohdb.exe main.c
+gcc -o sohdb.exe main.c sohdatabase.c
