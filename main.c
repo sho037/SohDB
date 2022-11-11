@@ -19,7 +19,6 @@ int main(void)
     printf("どの操作を行いますか？\n");
     printAllMode();
     scanf("%s", operation);
-    printf("%s\n", operation); // develop
     if (whichOperation(operation, "create"))
     {
       createDataBase();
