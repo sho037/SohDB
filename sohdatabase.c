@@ -58,23 +58,23 @@ bool isExistFile(const char *path)
 // 戻り値はture、falseになる。
 bool whichOperation(char operation[], char match[])
 {
-  if (strcmp(match, "create") == 0 && (strcmp(operation, "create") == 0 || strcmp(operation, "作成")))
+  if (strcmp(match, "create") == 0 && (strcmp(operation, "create") == 0 || strcmp(operation, "作成") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "delete") == 0 && (strcmp(operation, "delete") == 0 || strcmp(operation, "削除")))
+  else if (strcmp(match, "delete") == 0 && (strcmp(operation, "delete") == 0 || strcmp(operation, "削除") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "show") == 0 && (strcmp(operation, "show") == 0 || strcmp(operation, "表示")))
+  else if (strcmp(match, "show") == 0 && (strcmp(operation, "show") == 0 || strcmp(operation, "表示") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "search") == 0 && (strcmp(operation, "search") == 0 || strcmp(operation, "検索")))
+  else if (strcmp(match, "search") == 0 && (strcmp(operation, "search") == 0 || strcmp(operation, "検索") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "add") == 0 && (strcmp(operation, "add") == 0 || strcmp(operation, "追加")))
+  else if (strcmp(match, "add") == 0 && (strcmp(operation, "add") == 0 || strcmp(operation, "追加") == 0))
   {
     return true;
   }
