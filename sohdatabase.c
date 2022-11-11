@@ -198,4 +198,22 @@ void searchDataBase()
 
 void addDataBase()
 {
+  char filename[FILENAMESIZE];
+  printf("データベースにデータを追加するため、ファイル名を入力してください。\n");
+  do
+  {
+    scanf("%s", filename);
+    if (!isExistFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!isExistFile(filename));
+
+  // ここからデータベースにデータを追加
+  FILE *fp = fopen(filename, "a");
+  if (fp == NULL)
+  {
+    printf("ファイルの読み込みに失敗しました。\n");
+    return;
+  }
 }
