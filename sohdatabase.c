@@ -3,6 +3,7 @@
 #include <stdbool.h>
 
 #define FILENAMESIZE 200
+#define DATABASEPATH "database/"
 
 // printAllMode関数
 // すべてのモードを表示する
