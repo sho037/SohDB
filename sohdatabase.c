@@ -152,6 +152,25 @@ void deleteDataBase()
 
 void showDataBase()
 {
+  char filename[FILENAMESIZE];
+  printf("データベースの内容を表示するため、ファイル名を入力してください。\n");
+  do
+  {
+    scanf("%s", filename);
+    if (!isExistFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!isExistFile(filename));
+
+  // ここからデータベースの表示
+  FILE *fp = fopen(filename, "r");
+  if (fp == NULL)
+  {
+    printf("ファイルの読み込みに失敗しました。\n");
+    return;
+  }
+
 }
 
 void searchDataBase()
