@@ -12,8 +12,8 @@ int main(void)
   char operation[ARRAYSIZE];
   char filename[ARRAYSIZE];
   char yesorno[32];
+  
   printf("こんにちは\n");
-
   do
   {
     printf("どの操作を行いますか？\n");
