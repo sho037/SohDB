@@ -92,9 +92,9 @@ void createDataBase()
   printf("データベースを作成するため、ファイル名を決めてください。\n");
   do
   {
-    strcpy(filepath, DATABASEPATH);
+    strcpy(filepath, DATABASEPATH); // filepathを初期化
     scanf("%s", filename);
-    strcat(filepath, filename);
+    strcat(filepath, filename); // filenameをfilepathに追加し、filepathをパスとして使う
     if (isExistFile(filepath))
     {
       printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
@@ -120,9 +120,9 @@ void deleteDataBase()
   printf("データベースを削除するため、ファイル名を入力してください。\n");
   do
   {
-    strcpy(filepath, DATABASEPATH);
+    strcpy(filepath, DATABASEPATH); // filepathを初期化
     scanf("%s", filename);
-    strcat(filepath, filename);
+    strcat(filepath, filename); // filenameをfilepathに追加し、filepathをパスとして使う
     printf("%s", filepath); // デバッグ用
     if (!isExistFile(filepath))
     {
