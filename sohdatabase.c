@@ -93,6 +93,7 @@ void createDataBase()
   do
   {
     strcpy(filepath, DATABASEPATH); // filepathを初期化
+    printf("ファイル名を入力してください: ");
     scanf("%s", filename);
     strcat(filepath, filename); // filenameをfilepathに追加し、filepathをパスとして使う
     if (isExistFile(filepath))
@@ -102,7 +103,6 @@ void createDataBase()
   } while (isExistFile(filepath));
 
   // ここからデータベースの作成
-  printf("%s", filepath); // デバッグ用
   FILE *fp = fopen(filepath, "w");
   if (fp == NULL)
   {
@@ -121,9 +121,9 @@ void deleteDataBase()
   do
   {
     strcpy(filepath, DATABASEPATH); // filepathを初期化
+    printf("ファイル名を入力してください: ");
     scanf("%s", filename);
     strcat(filepath, filename); // filenameをfilepathに追加し、filepathをパスとして使う
-    printf("%s", filepath); // デバッグ用
     if (!isExistFile(filepath))
     {
       printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
@@ -135,8 +135,8 @@ void deleteDataBase()
   printf("ファイル名は『%s』です。本当に削除しますか？(Y/N)\n", filename);
   do
   {
+    printf("Y/N: ");
     scanf("%s", yesorno);
-    printf("%s", yesorno); // デバッグ用
     if (orYesNo(yesorno, "error"))
     {
       printf("YかNを入力してください。\n");
@@ -166,6 +166,7 @@ void showDataBase()
   printf("データベースの内容を表示するため、ファイル名を入力してください。\n");
   do
   {
+    printf("ファイル名を入力してください: ");
     scanf("%s", filename);
     if (!isExistFile(filename))
     {
@@ -189,6 +190,7 @@ void searchDataBase()
   printf("データベースの内容を検索するため、ファイル名を入力してください。\n");
   do
   {
+    printf("ファイル名を入力してください: ");
     scanf("%s", filename);
     if (!isExistFile(filename))
     {
@@ -212,6 +214,7 @@ void addDataBase()
   printf("データベースにデータを追加するため、ファイル名を入力してください。\n");
   do
   {
+    printf("ファイル名を入力してください: ");
     scanf("%s", filename);
     if (!isExistFile(filename))
     {

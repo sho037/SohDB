@@ -18,6 +18,7 @@ int main(void)
   {
     printf("どの操作を行いますか？\n");
     printAllMode();
+    printf("操作を入力してください: ");
     scanf("%s", operation);
     if (whichOperation(operation, "create"))
     {
@@ -46,7 +47,8 @@ int main(void)
 
     do
     {
-      printf("データベースの操作を続けますか？(Y/n)\n");
+      printf("データベースの操作を続けますか？(Y/N)\n");
+      printf("Y/N: ");
       scanf("%s", yesorno);
     } while (orYesNo(yesorno, "error"));
 
