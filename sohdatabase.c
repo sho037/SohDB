@@ -132,7 +132,7 @@ void deleteDataBase()
 
   // ここからデータベースの削除
   char yesorno[10];
-  printf("ファイル名は:%sです。本当に削除しますか？(Y/N)\n", filename);
+  printf("ファイル名は『%s』です。本当に削除しますか？(Y/N)\n", filename);
   do
   {
     scanf("%s", yesorno);
