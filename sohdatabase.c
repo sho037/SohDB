@@ -88,6 +88,7 @@ bool whichOperation(char operation[], char match[])
 void createDataBase()
 {
   char filename[FILENAMESIZE];
+  char filepath[FILENAMESIZE + 56] = DATABASEPATH;
   printf("データベースを作成するため、ファイル名を決めてください。\n");
   do
   {
@@ -99,7 +100,9 @@ void createDataBase()
   } while (isExistFile(filename));
 
   // ここからデータベースの作成
-  FILE *fp = fopen(filename, "w");
+  strcat(filepath, filename);
+  printf("%s", filepath); // デバッグ用
+  FILE *fp = fopen(filepath, "w");
   if (fp == NULL)
   {
     printf("ファイルの作成に失敗しました。\n");
@@ -112,15 +115,19 @@ void createDataBase()
 void deleteDataBase()
 {
   char filename[FILENAMESIZE];
+  char filepath[FILENAMESIZE + 56] = DATABASEPATH;
   printf("データベースを削除するため、ファイル名を入力してください。\n");
   do
   {
+    strcpy(filepath, DATABASEPATH);
     scanf("%s", filename);
-    if (!isExistFile(filename))
+    strcat(filepath, filename);
+    printf("%s", filepath); // デバッグ用
+    if (!isExistFile(filepath))
     {
       printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
     }
-  } while (!isExistFile(filename));
+  } while (!isExistFile(filepath));
 
   // ここからデータベースの削除
   char yesorno[10];
@@ -136,7 +143,7 @@ void deleteDataBase()
 
   if (orYesNo(yesorno, "yes"))
   {
-    if (remove(filename) == 0)
+    if (remove(filepath) == 0)
     {
       printf("ファイルの削除に成功しました。\n");
     }
