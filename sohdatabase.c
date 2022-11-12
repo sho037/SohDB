@@ -29,7 +29,7 @@ bool orYesNo(char yesorno[], char match[])
   {
     return true;
   }
-  else if (strcmp(match, "error") == 0)
+  else if (strcmp(match, "error") == 0 && (strcmp(yesorno, "Y") != 0 && strcmp(yesorno, "y") != 0 && strcmp(yesorno, "N") != 0 && strcmp(yesorno, "n") != 0))
   {
     return true;
   }
