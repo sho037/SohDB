@@ -48,7 +48,7 @@ int main(void)
     {
       printf("データベースの操作を続けますか？(Y/n)\n");
       scanf("%s", yesorno);
-    } while (!orYesNo(yesorno, "error"));
+    } while (orYesNo(yesorno, "error"));
 
   } while (!orYesNo(yesorno, "no"));
 
