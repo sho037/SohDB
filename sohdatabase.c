@@ -92,15 +92,16 @@ void createDataBase()
   printf("データベースを作成するため、ファイル名を決めてください。\n");
   do
   {
+    strcpy(filepath, DATABASEPATH);
     scanf("%s", filename);
-    if (isExistFile(filename))
+    strcat(filepath, filename);
+    if (isExistFile(filepath))
     {
       printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
     }
-  } while (isExistFile(filename));
+  } while (isExistFile(filepath));
 
   // ここからデータベースの作成
-  strcat(filepath, filename);
   printf("%s", filepath); // デバッグ用
   FILE *fp = fopen(filepath, "w");
   if (fp == NULL)
