@@ -16,7 +16,7 @@ int main(void)
   printf("こんにちは\n");
   do
   {
-    printf("どの操作を行いますか？\n");
+    printf("\nどの操作を行いますか？\n");
     printAllMode();
     printf("操作を入力してください: ");
     scanf("%s", operation);
