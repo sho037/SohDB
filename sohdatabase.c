@@ -141,7 +141,7 @@ void deleteDataBase()
     {
       printf("YかNを入力してください。\n");
     }
-  } while (!orYesNo(yesorno, "error"));
+  } while (orYesNo(yesorno, "error"));
 
   if (orYesNo(yesorno, "yes"))
   {
