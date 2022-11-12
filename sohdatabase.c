@@ -136,6 +136,7 @@ void deleteDataBase()
   do
   {
     scanf("%s", yesorno);
+    printf("%s", yesorno); // デバッグ用
     if (orYesNo(yesorno, "error"))
     {
       printf("YかNを入力してください。\n");
