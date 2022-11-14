@@ -21,6 +21,8 @@ void printAllMode(void)
 // 返り値はtrueかfalse
 bool orYesNo(char yesorno[], char match[])
 {
+  // それぞれのifでモードを判定し、モードにあった入力が行われたかを判定する
+  // エラー以外でyかnが入力されなかった場合は、yかnの入力を促し、falseを返す
   if (strcmp(match, "yes") == 0)  // yesを判定する場合
   {
     if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
