@@ -21,22 +21,35 @@ void printAllMode(void)
 // 返り値はtrueかfalse
 bool orYesNo(char yesorno[], char match[])
 {
-  if (strcmp(match, "yes") == 0 && (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0))
+  if (strcmp(match, "yes") == 0)  // yesを判定する場合
   {
+    if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
+    {
+      return true;
+    }
+  }
+  else if (strcmp(match, "no") == 0)  // noを判定する場合
+  {
+    if(strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
+    {
+      return true;
+    }
+  }
+  else if (strcmp(match, "error") == 0) // errorを判定する場合
+  {
+    if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
+    {
+      return false;
+    }
+    else if(strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
+    {
+      return false;
+    }
     return true;
   }
-  else if (strcmp(match, "no") == 0 && (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0))
-  {
-    return true;
-  }
-  else if (strcmp(match, "error") == 0 && (strcmp(yesorno, "Y") != 0 && strcmp(yesorno, "y") != 0 && strcmp(yesorno, "N") != 0 && strcmp(yesorno, "n") != 0))
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+
+  printf("YかNを入力してください\n");
+  return false;
 }
 
 // isExistFile関数
