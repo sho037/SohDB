@@ -56,7 +56,7 @@ bool isExistFile(const char *path)
 
 // whichOperation関数
 // 第一引数に入れられた操作と、第二引数に入れられた操作が一致するかどうかを判定する
-// 戻り値はture、falseになる。
+// 戻り値はtrue、falseになる。
 bool whichOperation(char operation[], char match[])
 {
   if (strcmp(match, "create") == 0 && (strcmp(operation, "create") == 0 || strcmp(operation, "作成") == 0))
