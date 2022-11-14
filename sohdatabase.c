@@ -39,7 +39,7 @@ bool orYesNo(char yesorno[], char match[])
   }
 }
 
-// existFile関数
+// isExistFile関数
 // 引数として与えられたファイルが存在するかどうかを判定する
 // 存在する場合は戻り値がtrue、存在しない場合はfalseを返す
 bool isExistFile(const char *path)
