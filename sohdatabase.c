@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define ARRAYSIZE 256
 #define FILENAMESIZE 200
+#define DATABASEPATH "database/"
 
 // printAllMode関数
 // すべてのモードを表示する
@@ -18,7 +18,7 @@ void printAllMode(void)
 
 // orYesNo関数
 // 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
-// 返り値はtureかfalse
+// 返り値はtrueかfalse
 bool orYesNo(char yesorno[], char match[])
 {
   if (strcmp(match, "yes") == 0 && (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0))
@@ -29,7 +29,7 @@ bool orYesNo(char yesorno[], char match[])
   {
     return true;
   }
-  else if (strcmp(match, "error") == 0)
+  else if (strcmp(match, "error") == 0 && (strcmp(yesorno, "Y") != 0 && strcmp(yesorno, "y") != 0 && strcmp(yesorno, "N") != 0 && strcmp(yesorno, "n") != 0))
   {
     return true;
   }
@@ -39,7 +39,7 @@ bool orYesNo(char yesorno[], char match[])
   }
 }
 
-// existFile関数
+// isExistFile関数
 // 引数として与えられたファイルが存在するかどうかを判定する
 // 存在する場合は戻り値がtrue、存在しない場合はfalseを返す
 bool isExistFile(const char *path)
@@ -56,26 +56,26 @@ bool isExistFile(const char *path)
 
 // whichOperation関数
 // 第一引数に入れられた操作と、第二引数に入れられた操作が一致するかどうかを判定する
-// 戻り値はture、falseになる。
+// 戻り値はtrue、falseになる。
 bool whichOperation(char operation[], char match[])
 {
-  if (strcmp(match, "create") == 0 && (strcmp(operation, "create") == 0 || strcmp(operation, "作成")))
+  if (strcmp(match, "create") == 0 && (strcmp(operation, "create") == 0 || strcmp(operation, "作成") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "delete") == 0 && (strcmp(operation, "delete") == 0 || strcmp(operation, "削除")))
+  else if (strcmp(match, "delete") == 0 && (strcmp(operation, "delete") == 0 || strcmp(operation, "削除") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "show") == 0 && (strcmp(operation, "show") == 0 || strcmp(operation, "表示")))
+  else if (strcmp(match, "show") == 0 && (strcmp(operation, "show") == 0 || strcmp(operation, "表示") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "search") == 0 && (strcmp(operation, "search") == 0 || strcmp(operation, "検索")))
+  else if (strcmp(match, "search") == 0 && (strcmp(operation, "search") == 0 || strcmp(operation, "検索") == 0))
   {
     return true;
   }
-  else if (strcmp(match, "add") == 0 && (strcmp(operation, "add") == 0 || strcmp(operation, "追加")))
+  else if (strcmp(match, "add") == 0 && (strcmp(operation, "add") == 0 || strcmp(operation, "追加") == 0))
   {
     return true;
   }
@@ -88,18 +88,22 @@ bool whichOperation(char operation[], char match[])
 void createDataBase()
 {
   char filename[FILENAMESIZE];
+  char filepath[FILENAMESIZE + 56] = DATABASEPATH;
   printf("データベースを作成するため、ファイル名を決めてください。\n");
   do
   {
+    strcpy(filepath, DATABASEPATH); // filepathを初期化
+    printf("ファイル名を入力してください: ");
     scanf("%s", filename);
-    if (isExistFile(filename))
+    strcat(filepath, filename); // filenameをfilepathに追加し、filepathをパスとして使う
+    if (isExistFile(filepath))
     {
       printf("ファイルが存在するため、もう一度ファイル名を入力しなおしてください。\n");
     }
-  } while (isExistFile(filename));
+  } while (isExistFile(filepath));
 
   // ここからデータベースの作成
-  FILE *fp = fopen(filename, "w");
+  FILE *fp = fopen(filepath, "w");
   if (fp == NULL)
   {
     printf("ファイルの作成に失敗しました。\n");
@@ -111,16 +115,118 @@ void createDataBase()
 
 void deleteDataBase()
 {
+  char filename[FILENAMESIZE];
+  char filepath[FILENAMESIZE + 56] = DATABASEPATH;
+  printf("データベースを削除するため、ファイル名を入力してください。\n");
+  do
+  {
+    strcpy(filepath, DATABASEPATH); // filepathを初期化
+    printf("ファイル名を入力してください: ");
+    scanf("%s", filename);
+    strcat(filepath, filename); // filenameをfilepathに追加し、filepathをパスとして使う
+    if (!isExistFile(filepath))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!isExistFile(filepath));
+
+  // ここからデータベースの削除
+  char yesorno[10];
+  printf("ファイル名は『%s』です。本当に削除しますか？(Y/N)\n", filename);
+  do
+  {
+    printf("Y/N: ");
+    scanf("%s", yesorno);
+    if (orYesNo(yesorno, "error"))
+    {
+      printf("YかNを入力してください。\n");
+    }
+  } while (orYesNo(yesorno, "error"));
+
+  if (orYesNo(yesorno, "yes"))
+  {
+    if (remove(filepath) == 0)
+    {
+      printf("ファイルの削除に成功しました。\n");
+    }
+    else
+    {
+      printf("ファイルの削除に失敗しました。\n");
+    }
+  }
+  else if (orYesNo(yesorno, "no"))
+  {
+    printf("ファイルの削除をキャンセルしました。\n");
+  }
 }
 
 void showDataBase()
 {
+  char filename[FILENAMESIZE];
+  printf("データベースの内容を表示するため、ファイル名を入力してください。\n");
+  do
+  {
+    printf("ファイル名を入力してください: ");
+    scanf("%s", filename);
+    if (!isExistFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!isExistFile(filename));
+
+  // ここからデータベースの表示
+  FILE *fp = fopen(filename, "r");
+  if (fp == NULL)
+  {
+    printf("ファイルの読み込みに失敗しました。\n");
+    return;
+  }
+
 }
 
 void searchDataBase()
 {
+  char filename[FILENAMESIZE];
+  printf("データベースの内容を検索するため、ファイル名を入力してください。\n");
+  do
+  {
+    printf("ファイル名を入力してください: ");
+    scanf("%s", filename);
+    if (!isExistFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!isExistFile(filename));
+
+  // ここからデータベースの検索
+  FILE *fp = fopen(filename, "r");
+  if (fp == NULL)
+  {
+    printf("ファイルの読み込みに失敗しました。\n");
+    return;
+  }
+
 }
 
 void addDataBase()
 {
+  char filename[FILENAMESIZE];
+  printf("データベースにデータを追加するため、ファイル名を入力してください。\n");
+  do
+  {
+    printf("ファイル名を入力してください: ");
+    scanf("%s", filename);
+    if (!isExistFile(filename))
+    {
+      printf("ファイルが存在しないため、もう一度ファイル名を入力しなおしてください。\n");
+    }
+  } while (!isExistFile(filename));
+
+  // ここからデータベースにデータを追加
+  FILE *fp = fopen(filename, "a");
+  if (fp == NULL)
+  {
+    printf("ファイルの読み込みに失敗しました。\n");
+    return;
+  }
 }

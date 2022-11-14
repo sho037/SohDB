@@ -12,14 +12,14 @@ int main(void)
   char operation[ARRAYSIZE];
   char filename[ARRAYSIZE];
   char yesorno[32];
+  
   printf("こんにちは\n");
-
   do
   {
-    printf("どの操作を行いますか？\n");
+    printf("\nどの操作を行いますか？\n");
     printAllMode();
+    printf("操作を入力してください: ");
     scanf("%s", operation);
-    printf("%s\n", operation); // develop
     if (whichOperation(operation, "create"))
     {
       createDataBase();
@@ -47,9 +47,10 @@ int main(void)
 
     do
     {
-      printf("データベースの操作を続けますか？(Y/n)\n");
+      printf("データベースの操作を続けますか？(Y/N)\n");
+      printf("Y/N: ");
       scanf("%s", yesorno);
-    } while (!orYesNo(yesorno, "error"));
+    } while (orYesNo(yesorno, "error"));
 
   } while (!orYesNo(yesorno, "no"));
 

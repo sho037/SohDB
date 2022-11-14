@@ -12,5 +12,6 @@ ubuntu にて実行しています。
 6. `gcc --version`
 7. gccが入っていなかった場合、指示にしたがってgccをインストールしてください
 8. `git clone ???`
-9. `gcc -o sohdb.exe main.c`
+9. `sh compile.sh`
+
 実行時は`./sohdb.exe`で起動してください
