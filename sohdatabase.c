@@ -23,16 +23,16 @@ bool orYesNo(char yesorno[], char match[])
 {
   // それぞれのifでモードを判定し、モードにあった入力が行われたかを判定する
   // エラー以外でyかnが入力されなかった場合は、yかnの入力を促し、falseを返す
-  if (strcmp(match, "yes") == 0)  // yesを判定する場合
+  if (strcmp(match, "yes") == 0) // yesを判定する場合
   {
     if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
     {
       return true;
     }
   }
-  else if (strcmp(match, "no") == 0)  // noを判定する場合
+  else if (strcmp(match, "no") == 0) // noを判定する場合
   {
-    if(strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
+    if (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
     {
       return true;
     }
@@ -43,7 +43,7 @@ bool orYesNo(char yesorno[], char match[])
     {
       return false;
     }
-    else if(strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
+    else if (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
     {
       return false;
     }
@@ -70,12 +70,20 @@ bool askYesNo(char mode[])
       {
         return true;
       }
+      else
+      {
+        return false;
+      }
     }
     else if (strcmp(mode, "no") == 0) // noを判定する場合
     {
       if (strcmp(yes_or_no, "N") == 0 || strcmp(yes_or_no, "n") == 0)
       {
         return true;
+      }
+      else
+      {
+        return false;
       }
     }
 
@@ -155,7 +163,7 @@ void createDataBase()
     printf("ファイルの作成に失敗しました。\n");
     return;
   }
-  
+
   printf("データベースの作成を終了します。\n");
 }
 
@@ -227,7 +235,6 @@ void showDataBase()
     printf("ファイルの読み込みに失敗しました。\n");
     return;
   }
-
 }
 
 void searchDataBase()
@@ -251,7 +258,6 @@ void searchDataBase()
     printf("ファイルの読み込みに失敗しました。\n");
     return;
   }
-
 }
 
 void addDataBase()
