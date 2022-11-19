@@ -1,9 +1,9 @@
 void printAllMode(void);
 
-// orYesNo関数
-// 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
-// 返り値はtureかfalse
-bool orYesNo(char yesorno[], char match[]);
+// askYesNo関数
+// 引数にはモードを入力(yesかno)
+// 返り値はtrueかfalse
+bool askYesNo(char mode[]);
 
 // existFile関数
 // 引数として与えられたファイルが存在するかどうかを判定する

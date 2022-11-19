@@ -16,27 +16,43 @@ void printAllMode(void)
   printf("DBの内容を追加する: add, 追加\n");
 }
 
-// orYesNo関数
-// 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
+// askYesNo関数
+// 引数にはモードを入力(yesかno)
 // 返り値はtrueかfalse
-bool orYesNo(char yesorno[], char match[])
+bool askYesNo(char mode[])
 {
-  if (strcmp(match, "yes") == 0 && (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0))
+  char yes_or_no[20];
+  printf("Y/N: ");
+  scanf("%s", yes_or_no);
+  do
   {
-    return true;
-  }
-  else if (strcmp(match, "no") == 0 && (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0))
-  {
-    return true;
-  }
-  else if (strcmp(match, "error") == 0 && (strcmp(yesorno, "Y") != 0 && strcmp(yesorno, "y") != 0 && strcmp(yesorno, "N") != 0 && strcmp(yesorno, "n") != 0))
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+    if (strcmp(mode, "yes") == 0) // yesを判定する場合
+    {
+      if (strcmp(yes_or_no, "Y") == 0 || strcmp(yes_or_no, "y") == 0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    else if (strcmp(mode, "no") == 0) // noを判定する場合
+    {
+      if (strcmp(yes_or_no, "N") == 0 || strcmp(yes_or_no, "n") == 0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    printf("YかNを入力してください\n");
+    printf("Y/N: ");
+    scanf("%s", yes_or_no);
+  } while (true);
 }
 
 // isExistFile関数
@@ -109,7 +125,7 @@ void createDataBase()
     printf("ファイルの作成に失敗しました。\n");
     return;
   }
-  
+
   printf("データベースの作成を終了します。\n");
 }
 
@@ -132,18 +148,8 @@ void deleteDataBase()
 
   // ここからデータベースの削除
   char yesorno[10];
-  printf("ファイル名は『%s』です。本当に削除しますか？(Y/N)\n", filename);
-  do
-  {
-    printf("Y/N: ");
-    scanf("%s", yesorno);
-    if (orYesNo(yesorno, "error"))
-    {
-      printf("YかNを入力してください。\n");
-    }
-  } while (orYesNo(yesorno, "error"));
-
-  if (orYesNo(yesorno, "yes"))
+  printf("ファイル名は『%s』です。本当に削除しますか？\n", filename);
+  if (askYesNo("yes"))
   {
     if (remove(filepath) == 0)
     {
@@ -154,7 +160,7 @@ void deleteDataBase()
       printf("ファイルの削除に失敗しました。\n");
     }
   }
-  else if (orYesNo(yesorno, "no"))
+  else
   {
     printf("ファイルの削除をキャンセルしました。\n");
   }
@@ -181,7 +187,6 @@ void showDataBase()
     printf("ファイルの読み込みに失敗しました。\n");
     return;
   }
-
 }
 
 void searchDataBase()
@@ -205,7 +210,6 @@ void searchDataBase()
     printf("ファイルの読み込みに失敗しました。\n");
     return;
   }
-
 }
 
 void addDataBase()

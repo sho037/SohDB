@@ -45,14 +45,8 @@ int main(void)
       printf("入力された操作は存在しません\n");
     }
 
-    do
-    {
-      printf("データベースの操作を続けますか？(Y/N)\n");
-      printf("Y/N: ");
-      scanf("%s", yesorno);
-    } while (orYesNo(yesorno, "error"));
-
-  } while (!orYesNo(yesorno, "no"));
+    printf("続けますか？\n");
+  } while (askYesNo("yes"));
 
   return 0;
 }
