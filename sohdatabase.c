@@ -16,44 +16,6 @@ void printAllMode(void)
   printf("DBの内容を追加する: add, 追加\n");
 }
 
-// orYesNo関数
-// 引数の値がYes(y)かNo(n)かを判定する第二引数に判定する文字を入れる
-// 返り値はtrueかfalse
-bool orYesNo(char yesorno[], char match[])
-{
-  // それぞれのifでモードを判定し、モードにあった入力が行われたかを判定する
-  // エラー以外でyかnが入力されなかった場合は、yかnの入力を促し、falseを返す
-  if (strcmp(match, "yes") == 0) // yesを判定する場合
-  {
-    if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
-    {
-      return true;
-    }
-  }
-  else if (strcmp(match, "no") == 0) // noを判定する場合
-  {
-    if (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
-    {
-      return true;
-    }
-  }
-  else if (strcmp(match, "error") == 0) // errorを判定する場合
-  {
-    if (strcmp(yesorno, "Y") == 0 || strcmp(yesorno, "y") == 0)
-    {
-      return false;
-    }
-    else if (strcmp(yesorno, "N") == 0 || strcmp(yesorno, "n") == 0)
-    {
-      return false;
-    }
-    return true;
-  }
-
-  printf("YかNを入力してください\n");
-  return false;
-}
-
 // askYesNo関数
 // 引数にはモードを入力(yesかno)
 // 返り値はtrueかfalse
