@@ -54,6 +54,37 @@ bool orYesNo(char yesorno[], char match[])
   return false;
 }
 
+// askYesNo関数
+// 引数にはモードを入力(yesかno)
+// 返り値はtrueかfalse
+bool askYesNo(char mode[])
+{
+  char yes_or_no[20];
+  printf("Y/N: ");
+  scanf("%s", yes_or_no);
+  do
+  {
+    if (strcmp(mode, "yes") == 0) // yesを判定する場合
+    {
+      if (strcmp(yes_or_no, "Y") == 0 || strcmp(yes_or_no, "y") == 0)
+      {
+        return true;
+      }
+    }
+    else if (strcmp(mode, "no") == 0) // noを判定する場合
+    {
+      if (strcmp(yes_or_no, "N") == 0 || strcmp(yes_or_no, "n") == 0)
+      {
+        return true;
+      }
+    }
+
+    printf("YかNを入力してください\n");
+    printf("Y/N: ");
+    scanf("%s", yes_or_no);
+  } while (true);
+}
+
 // isExistFile関数
 // 引数として与えられたファイルが存在するかどうかを判定する
 // 存在する場合は戻り値がtrue、存在しない場合はfalseを返す
