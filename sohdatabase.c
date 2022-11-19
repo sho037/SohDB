@@ -186,18 +186,8 @@ void deleteDataBase()
 
   // ここからデータベースの削除
   char yesorno[10];
-  printf("ファイル名は『%s』です。本当に削除しますか？(Y/N)\n", filename);
-  do
-  {
-    printf("Y/N: ");
-    scanf("%s", yesorno);
-    if (orYesNo(yesorno, "error"))
-    {
-      printf("YかNを入力してください。\n");
-    }
-  } while (orYesNo(yesorno, "error"));
-
-  if (orYesNo(yesorno, "yes"))
+  printf("ファイル名は『%s』です。本当に削除しますか？\n", filename);
+  if (askYesNo("yes"))
   {
     if (remove(filepath) == 0)
     {
@@ -208,7 +198,7 @@ void deleteDataBase()
       printf("ファイルの削除に失敗しました。\n");
     }
   }
-  else if (orYesNo(yesorno, "no"))
+  else
   {
     printf("ファイルの削除をキャンセルしました。\n");
   }
