@@ -5,6 +5,11 @@ void printAllMode(void);
 // 返り値はtureかfalse
 bool orYesNo(char yesorno[], char match[]);
 
+// askYesNo関数
+// 引数にはモードを入力(yesかno)
+// 返り値はtrueかfalse
+bool askYesNo(char mode[]);
+
 // existFile関数
 // 引数として与えられたファイルが存在するかどうかを判定する
 // 存在する場合は戻り値がtrue、存在しない場合はfalseを返す
